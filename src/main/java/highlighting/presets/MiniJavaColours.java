@@ -1,6 +1,6 @@
 package highlighting.presets;
 
-import java.awt.*;
+import java.awt.Color;
 
 public final class MiniJavaColours {
   public static final Color STRING_LITERAL_COLOUR = Color.ORANGE;

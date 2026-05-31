@@ -1,13 +1,12 @@
 package highlighting.presets;
 
-import java.awt.Color;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
 
 import highlighting.core.HighlightRegion;
 import highlighting.regex.Token;
+import java.awt.Color;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class MiniJavaTokensTest {
 
@@ -44,11 +43,12 @@ class MiniJavaTokensTest {
     String text = "public class packageable final";
     var regions = token.test(text);
 
-    assertEquals(List.of(
-        new HighlightRegion(0, 6, token.colour()),
-        new HighlightRegion(7, 12, token.colour()),
-        new HighlightRegion(25, 30, token.colour())
-    ), regions);
+    assertEquals(
+        List.of(
+            new HighlightRegion(0, 6, token.colour()),
+            new HighlightRegion(7, 12, token.colour()),
+            new HighlightRegion(25, 30, token.colour())),
+        regions);
   }
 
   @Test
