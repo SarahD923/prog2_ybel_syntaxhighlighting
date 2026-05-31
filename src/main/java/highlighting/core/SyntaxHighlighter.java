@@ -1,9 +1,10 @@
 package highlighting.core;
 
+import java.util.List;
+
 import highlighting.regex.RegexHighlighter;
 import highlighting.regex.ScanningHighlighter;
 import highlighting.ui.EditorUI;
-import java.util.List;
 
 public abstract class SyntaxHighlighter {
 

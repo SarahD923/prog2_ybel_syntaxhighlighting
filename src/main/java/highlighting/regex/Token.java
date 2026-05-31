@@ -1,12 +1,13 @@
 package highlighting.regex;
 
-import highlighting.core.HighlightRegion;
 import java.awt.Color;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.MatchResult;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+
+import highlighting.core.HighlightRegion;
 
 /**
  * Represents a lexical token defined by a regular expression.

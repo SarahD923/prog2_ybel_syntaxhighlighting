@@ -1,9 +1,10 @@
 package highlighting;
 
-import highlighting.antlr.*;
+import highlighting.antlr.AntlrTokenCollector;
 import highlighting.core.SyntaxHighlighter;
 import highlighting.presets.Texts;
-import highlighting.regex.*;
+import highlighting.regex.RegexHighlighter;
+import highlighting.regex.ScanningHighlighter;
 import highlighting.ui.EditorUI;
 
 public class Main {
