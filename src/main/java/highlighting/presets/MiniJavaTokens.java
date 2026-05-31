@@ -20,7 +20,7 @@ public final class MiniJavaTokens {
   public static List<Token> defaultTokens() {
     return List.of(
         Token.of(Pattern.compile("(?s)/\\*\\*.*?\\*/"), MiniJavaColours.JAVADOC_COMMENT_COLOUR),
-        Token.of(Pattern.compile("(?s)/\\*.*?\\*/"), MiniJavaColours.BLOCK_COMMENT_COLOUR),
+        Token.of(Pattern.compile("(?s)/\\*(?!\\*).*?\\*/"), MiniJavaColours.BLOCK_COMMENT_COLOUR),
         Token.of(Pattern.compile("//[^\\n\\r]*"), MiniJavaColours.LINE_COMMENT_COLOUR),
         Token.of(Pattern.compile("\"([^\"\\\\]|\\\\.)*\""), MiniJavaColours.STRING_LITERAL_COLOUR),
         Token.of(Pattern.compile("'([^'\\\\]|\\\\.)'"), MiniJavaColours.CHAR_LITERAL_COLOUR),
@@ -28,7 +28,6 @@ public final class MiniJavaTokens {
             Pattern.compile(
                 "\\b(?:package|import|class|public|private|final|return|null|new|void|int|char|boolean)\\b"),
             MiniJavaColours.KEYWORD_COLOUR),
-        Token.of(Pattern.compile("@[A-Za-z][A-Za-z0-9\\-_]*"), MiniJavaColours.ANNOTATION_COLOUR)
-    );
-  }
+        Token.of(Pattern.compile("@[A-Za-z][A-Za-z0-9\\-_]*"), MiniJavaColours.ANNOTATION_COLOUR));
+}
 }
