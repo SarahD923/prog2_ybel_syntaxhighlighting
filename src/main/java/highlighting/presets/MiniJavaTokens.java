@@ -1,9 +1,8 @@
 package highlighting.presets;
 
+import highlighting.regex.Token;
 import java.util.List;
 import java.util.regex.Pattern;
-
-import highlighting.regex.Token;
 
 public final class MiniJavaTokens {
 
@@ -25,10 +24,8 @@ public final class MiniJavaTokens {
         Token.of(Pattern.compile("\"([^\"\\\\]|\\\\.)*\""), MiniJavaColours.STRING_LITERAL_COLOUR),
         Token.of(Pattern.compile("'([^'\\\\]|\\\\.)'"), MiniJavaColours.CHAR_LITERAL_COLOUR),
         Token.of(
-            Pattern.compile(
-                "\\b(?:package|import|class|public|private|final|return|null|new)\\b"),
+            Pattern.compile("\\b(?:package|import|class|public|private|final|return|null|new)\\b"),
             MiniJavaColours.KEYWORD_COLOUR),
-        Token.of(Pattern.compile("@[A-Za-z][A-Za-z0-9\\-_]*"), MiniJavaColours.ANNOTATION_COLOUR)
-    );
+        Token.of(Pattern.compile("@[A-Za-z][A-Za-z0-9\\-_]*"), MiniJavaColours.ANNOTATION_COLOUR));
   }
 }

@@ -1,12 +1,11 @@
 package highlighting.regex;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
 
 import highlighting.core.HighlightRegion;
 import highlighting.presets.MiniJavaColours;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class ScanningHighlighterTest {
 
@@ -18,7 +17,8 @@ class ScanningHighlighterTest {
     var regions = highlighter.computeRegions(text);
 
     assertEquals(1, regions.size());
-    assertEquals(new HighlightRegion(0, 13, MiniJavaColours.JAVADOC_COMMENT_COLOUR), regions.get(0));
+    assertEquals(
+        new HighlightRegion(0, 13, MiniJavaColours.JAVADOC_COMMENT_COLOUR), regions.get(0));
   }
 
   @Test
@@ -34,9 +34,10 @@ class ScanningHighlighterTest {
     String text = "\"hi\"'a'";
     var regions = highlighter.computeRegions(text);
 
-    assertEquals(List.of(
-        new HighlightRegion(0, 4, MiniJavaColours.STRING_LITERAL_COLOUR),
-        new HighlightRegion(4, 7, MiniJavaColours.CHAR_LITERAL_COLOUR)
-    ), regions);
+    assertEquals(
+        List.of(
+            new HighlightRegion(0, 4, MiniJavaColours.STRING_LITERAL_COLOUR),
+            new HighlightRegion(4, 7, MiniJavaColours.CHAR_LITERAL_COLOUR)),
+        regions);
   }
 }

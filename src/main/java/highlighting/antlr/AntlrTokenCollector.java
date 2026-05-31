@@ -1,9 +1,8 @@
 package highlighting.antlr;
 
-import java.util.List;
-
 import highlighting.core.HighlightRegion;
 import highlighting.core.SyntaxHighlighter;
+import java.util.List;
 
 // TODO Phase III — AntlrTokenCollector (token-based syntax highlighting).
 

@@ -1,13 +1,12 @@
 package highlighting.regex;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.Test;
 
 import highlighting.core.HighlightRegion;
 import highlighting.presets.MiniJavaColours;
+import java.util.List;
+import org.junit.jupiter.api.Test;
 
 class RegexHighlighterTest {
 
@@ -18,10 +17,11 @@ class RegexHighlighterTest {
     String text = "public class Test";
     var regions = highlighter.computeRegions(text);
 
-    assertEquals(List.of(
-        new HighlightRegion(0, 6, MiniJavaColours.KEYWORD_COLOUR),
-        new HighlightRegion(7, 12, MiniJavaColours.KEYWORD_COLOUR)
-    ), regions);
+    assertEquals(
+        List.of(
+            new HighlightRegion(0, 6, MiniJavaColours.KEYWORD_COLOUR),
+            new HighlightRegion(7, 12, MiniJavaColours.KEYWORD_COLOUR)),
+        regions);
   }
 
   @Test
@@ -39,7 +39,8 @@ class RegexHighlighterTest {
     var regions = highlighter.computeRegions(text);
 
     assertEquals(1, regions.size());
-    assertEquals(new HighlightRegion(0, 13, MiniJavaColours.JAVADOC_COMMENT_COLOUR), regions.get(0));
+    assertEquals(
+        new HighlightRegion(0, 13, MiniJavaColours.JAVADOC_COMMENT_COLOUR), regions.get(0));
   }
 
   @Test
@@ -47,10 +48,11 @@ class RegexHighlighterTest {
     String text = "\"hi\"'a'";
     var regions = highlighter.computeRegions(text);
 
-    assertEquals(List.of(
-        new HighlightRegion(0, 4, MiniJavaColours.STRING_LITERAL_COLOUR),
-        new HighlightRegion(4, 7, MiniJavaColours.CHAR_LITERAL_COLOUR)
-    ), regions);
+    assertEquals(
+        List.of(
+            new HighlightRegion(0, 4, MiniJavaColours.STRING_LITERAL_COLOUR),
+            new HighlightRegion(4, 7, MiniJavaColours.CHAR_LITERAL_COLOUR)),
+        regions);
   }
 
   @Test

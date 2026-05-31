@@ -3,7 +3,6 @@ package highlighting.regex;
 import highlighting.core.HighlightRegion;
 import highlighting.core.SyntaxHighlighter;
 import highlighting.presets.MiniJavaTokens;
-import highlighting.regex.Token;
 import java.util.ArrayList;
 import java.util.List;
 
