@@ -51,6 +51,7 @@ expression: primary (operator expression)? ;
 
 primary: literal
        | IDENTIFIER
+       | IDENTIFIER '(' argumentList? ')'
        | 'new' type '(' argumentList? ')'
        | '(' expression ')'
        ;

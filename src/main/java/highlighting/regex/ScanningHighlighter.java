@@ -2,30 +2,46 @@ package highlighting.regex;
 
 import highlighting.core.HighlightRegion;
 import highlighting.core.SyntaxHighlighter;
-import java.util.*;
+import highlighting.presets.MiniJavaTokens;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
 
-// TODO: Implement a scanning-based highlighting strategy that reads the input from left to right.
-// At each position, select the longest token that matches at this position. If there is a tie, the
-// token that appears earlier in the token list should be preferred.
-
-// TODO: Make this class inherit from {@code SyntaxHighlighter} and implement the abstract method
-// {@code collectMatches}. The scanning algorithm should ensure that the resulting list of regions
-// is already sorted, non-overlapping and contains only valid regions, so that no additional
-// normalisation or conflict resolution is required. Therefore, {@code resolveConflicts} can be left
-// as is, and {@code normalize} should be overridden as the identity function.
 public class ScanningHighlighter extends SyntaxHighlighter {
 
-  // TODO: Implement the scanning-based matching strategy here. Iterate from left to right over the
-  // input, determine the best matching token at each position, and collect all resulting highlight
-  // regions in order.
   @Override
   public List<HighlightRegion> collectMatches(String text) {
-    throw new UnsupportedOperationException("not implemented yet");
+    var candidates = new ArrayList<HighlightRegion>();
+    int index = 0;
+    while (index < text.length()) {
+      HighlightRegion best = null;
+      for (var token : MiniJavaTokens.defaultTokens()) {
+        Matcher matcher = token.pattern().matcher(text);
+        matcher.region(index, text.length());
+        if (matcher.lookingAt()) {
+          int start = matcher.start(token.matchingGroup());
+          int end = matcher.end(token.matchingGroup());
+          if (start == index && end > start) {
+            var current = new HighlightRegion(start, end, token.colour());
+            if (best == null || current.end() > best.end()) {
+              best = current;
+            }
+          }
+        }
+      }
+
+      if (best != null) {
+        candidates.add(best);
+        index = best.end();
+      } else {
+        index++;
+      }
+    }
+    return candidates;
   }
 
-  // TODO: Implement the identity function here.
   @Override
   public List<HighlightRegion> normalize(List<HighlightRegion> candidates) {
-    throw new UnsupportedOperationException("not implemented yet");
+    return candidates;
   }
 }
